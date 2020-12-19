@@ -10,7 +10,7 @@ import Login from './Login';
 import { useStateValue } from './StateProvider';
 
 function App() {
-	const [{}, dispatch] = useStateValue();
+	const [, dispatch] = useStateValue();
 
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
@@ -26,7 +26,7 @@ function App() {
 				});
 			}
 		});
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className='app'>

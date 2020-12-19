@@ -5,7 +5,7 @@ import { useStateValue } from './StateProvider';
 import StarIcon from '@material-ui/icons/Star';
 
 function CheckoutProduct({ id, title, image, price, rating, hideBtn }) {
-	const [{ basket }, dispatch] = useStateValue();
+	const [, dispatch] = useStateValue();
 
 	const removeItem = () => {
 		dispatch({ type: remove_from_basket_action, id: id });
