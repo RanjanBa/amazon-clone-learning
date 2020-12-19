@@ -15,7 +15,6 @@ jobs:
             - uses: actions/setup-node@v1
             - run: npm ci
             - run: npm run build
-            - name: GitHub Action for Firebase
               with:
                   node-version: '14'
                   repoToken: '${{ secrets.GITHUB_TOKEN }}'
