@@ -29,3 +29,7 @@
 	border-color: #a88784 #9c7e31 #846a29;
 	color: #111;
 }
+
+.subtotal > button:disabled {
+	background: #f0c14b6e;
+}

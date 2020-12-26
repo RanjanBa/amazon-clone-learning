@@ -1,3 +1,27 @@
 .app {
 	margin: 0;
+	position: relative;
+}
+
+.cart-container {
+	z-index: 200;
+	position: absolute;
+	width: 200px;
+	background-color: #deb88752;
+	height: 200px;
+	border-radius: 100px;
+	box-shadow: 8px 8px 13px 4px #0a3973;
+}
+
+.cart-logo {
+	position: absolute;
+	color: #5c789da3;
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: contain;
+	max-width: 150px;
+	min-width: 100px;
+	max-height: 150px;
+	padding: 20px;
+	min-height: 100px;
 }

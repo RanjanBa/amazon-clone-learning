@@ -8,12 +8,20 @@ function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
+	const [isSigningIn, setSigningIn] = useState(false);
+
 	const signIn = (e) => {
 		e.preventDefault();
-
+		setSigningIn(true);
 		auth.signInWithEmailAndPassword(email, password)
-			.then((auth) => history.push('/'))
-			.catch((error) => alert(error.message));
+			.then((auth) => {
+				setSigningIn(false);
+				history.push('/');
+			})
+			.catch((error) => {
+				alert(error.message);
+				setSigningIn(false);
+			});
 	};
 
 	const createAccount = (e) => {
@@ -55,6 +63,7 @@ function Login() {
 						type='submit'
 						className='login-btn'
 						onClick={signIn}
+						disabled={isSigningIn}
 					>
 						Sign in
 					</button>
@@ -66,7 +75,11 @@ function Login() {
 					our Interest-based Ads Notice.
 				</p>
 
-				<button className='login-create-btn' onClick={createAccount}>
+				<button
+					disabled={isSigningIn}
+					className='login-create-btn'
+					onClick={createAccount}
+				>
 					Create Amazon Account
 				</button>
 			</div>

@@ -3,11 +3,17 @@ import './Product.css';
 import StarIcon from '@material-ui/icons/Star';
 import { useStateValue } from './StateProvider';
 import { add_to_basket_action } from './Constants';
+import { useSpring, animated } from 'react-spring';
 
-function Product({ id, title, image, price, rating }) {
+function Product({ id, title, image, price, rating, handleAddBasket }) {
 	const [, dispatch] = useStateValue();
 
+	const [{ scale }, set] = useSpring(() => ({ scale: 1, color: '#fff' }));
+
 	const addToBasket = () => {
+		if (handleAddBasket) {
+			handleAddBasket();
+		}
 		dispatch({
 			type: add_to_basket_action,
 			item: {
@@ -40,7 +46,14 @@ function Product({ id, title, image, price, rating }) {
 
 			<img src={image} alt='' />
 
-			<button onClick={addToBasket}>Add to Basket</button>
+			<animated.button
+				onMouseEnter={() => set({ scale: 1.2 })}
+				onMouseLeave={() => set({ scale: 1 })}
+				onClick={addToBasket}
+				style={{ transform: scale.interpolate((x) => `scale(${x})`) }}
+			>
+				Add to Basket
+			</animated.button>
 		</div>
 	);
 }
